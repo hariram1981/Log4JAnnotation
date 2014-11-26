@@ -1,0 +1,2 @@
+0.1 - Initial version
+    - added log4j annotation support
