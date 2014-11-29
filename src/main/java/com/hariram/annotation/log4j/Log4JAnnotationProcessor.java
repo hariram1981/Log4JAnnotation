@@ -16,13 +16,17 @@ import org.apache.log4j.RollingFileAppender;
 import org.apache.log4j.WriterAppender;
 import org.apache.log4j.xml.XMLLayout;
 
+import com.hariram.annotation.AnnotationException;
 import com.hariram.annotation.AnnotationProcessor;
+import com.hariram.annotation.AnnotationProcessor.AnnotationType;
 
 /**
  * @author hariram
  * date 25-Nov-2014
  */
 public class Log4JAnnotationProcessor implements AnnotationProcessor {
+	
+	public static final Logger LOGGER = Logger.getLogger(Log4JAnnotationProcessor.class);
 
 	public enum APPENDER_TYPE {CONSOLE, FILE, ROLLINGFILE};
 	
@@ -30,8 +34,8 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 	
 	public enum LAYOUT {JSON, HTML, XML, PATTERN};
 
-	public Object process(Object obj) {
-		
+	public Object process(Object obj) throws AnnotationException {
+		LOGGER.info("Log4JAnnotationProcessor.process, obj: " + obj);
 		Class<? extends Object> objClass = obj.getClass();
 		if(objClass.isAnnotationPresent(Log4J.class)){
 			Log4J log4j = (Log4J) objClass.getAnnotation(Log4J.class);
@@ -71,7 +75,8 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 				Field field = objClass.getField("LOGGER");
 				field.set(obj, classLogger);
 			} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-				e.printStackTrace();
+				LOGGER.error("Log4JAnnotationProcessor.process, message : " + e.getClass() + " " + e.getMessage());
+				throw new AnnotationException("PropertyAnnotationProcessor.process, message : " + e.getClass() + " " + e.getMessage(), AnnotationType.Log4JAnnotation);
 			}
 		}
 		
@@ -80,6 +85,7 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 			Logger.getRootLogger().removeAllAppenders();
 		}
 */		
+		LOGGER.info("Log4JAnnotationProcessor.process, done");
 		return null;
 	}
 	
@@ -180,6 +186,7 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 		return level;
 	}
 
+	@Deprecated
 	public Object process(Object arg0, String arg1, Object[] arg2) {
 		return null;
 	}
