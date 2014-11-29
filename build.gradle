@@ -5,7 +5,7 @@ apply plugin: 'maven'
 uploadArchives {
 	repositories.mavenDeployer {
 		repository (url: "file:///home/hariram/Personal/github/maven-repo-snapshot")
-		pom.version = '0.1'
+		pom.version = '0.2'
 		pom.artifactId = 'log4jannotation'
 		pom.groupId = 'com.hariram'
 	}
@@ -15,7 +15,7 @@ sourceCompatibility = '1.8'
 
 jar {
     baseName = 'log4jannotation'
-    version =  '0.1'
+    version =  '0.2'
 }
 
 repositories {

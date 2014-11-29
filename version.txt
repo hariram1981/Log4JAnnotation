@@ -1,2 +1,3 @@
 0.1 - Initial version
     - added log4j annotation support
+0.2 - Added logging in processor    
