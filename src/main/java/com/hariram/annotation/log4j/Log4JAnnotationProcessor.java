@@ -34,7 +34,7 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 	
 	public enum LAYOUT {JSON, HTML, XML, PATTERN};
 
-	public Object process(Object obj) throws AnnotationException {
+	public void process(Object obj) throws AnnotationException {
 		LOGGER.info("Log4JAnnotationProcessor.process, obj: " + obj);
 		Class<? extends Object> objClass = obj.getClass();
 		if(objClass.isAnnotationPresent(Log4J.class)){
@@ -86,7 +86,6 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 		}
 */		
 		LOGGER.info("Log4JAnnotationProcessor.process, done");
-		return null;
 	}
 	
 	/**
