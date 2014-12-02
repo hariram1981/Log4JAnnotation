@@ -11,7 +11,7 @@ import com.hariram.annotation.log4j.sample.SampleFileLog;
  */
 public class Log4JAnnotationTest {
 
-	//@Test
+	@Test
 	public void testConsoleLog() {
 		SampleConsoleLog.logDetails();
 	}

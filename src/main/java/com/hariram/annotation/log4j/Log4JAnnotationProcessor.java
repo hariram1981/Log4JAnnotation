@@ -18,7 +18,6 @@ import org.apache.log4j.xml.XMLLayout;
 
 import com.hariram.annotation.AnnotationException;
 import com.hariram.annotation.AnnotationProcessor;
-import com.hariram.annotation.AnnotationProcessor.AnnotationType;
 
 /**
  * @author hariram
