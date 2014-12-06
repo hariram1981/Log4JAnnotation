@@ -71,7 +71,8 @@ public class Log4JAnnotationProcessor implements AnnotationProcessor {
 			});
 
 			try {
-				Field field = objClass.getField("LOGGER");
+				Field field = objClass.getDeclaredField("LOGGER");
+				field.setAccessible(true);
 				field.set(obj, classLogger);
 			} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
 				LOGGER.error("Log4JAnnotationProcessor.process, message : " + e.getClass() + " " + e.getMessage());
