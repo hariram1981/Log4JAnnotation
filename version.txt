@@ -3,3 +3,4 @@
 0.2 - Added logging in processor
 0.3 - Updating annotation jar to 0.9    
 0.4 - Using getDeclaredFields() in order to access private field using reflection
+1.0 - Releasing version 1.0
